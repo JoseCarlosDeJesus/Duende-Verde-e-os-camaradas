@@ -1,11 +1,15 @@
 function preload() {
-    this.load.image('duende', 'assets/duende_verde_stance.png');
+    this.load.image('duende', 'assets/duende/duende_verde_stance.png');
     this.load.image('background', 'assets/fundo.png');
     this.load.spritesheet('duende_andando', 
-        'assets/Duende_Verde_Stance_andando1.png',
+        'assets/duende/Duende_Verde_Stance_andando1.png',
         { frameWidth: 70, frameHeight: 100 }
     );
-  this.load.spritesheet('duende_andando_esquerda',                  'assets/Duende_Verde_Stance_andandoLeft.png',                 {frameWidth:70, frameHeight: 100}            );
+  this.load.spritesheet('duende_andando_esquerda',                  'assets/duende/Duende_Verde_Stance_andandoLeft.png',                 {frameWidth:70, frameHeight: 100}            );
+
+  //capanga
+ this.load.spritesheet('capanga1a', 'assets/Capangas/CapangaWalk1.png', {frameWidth:87, frameHeight:129});
+  this.load.image('capanga1', 'assets/Capangas/Capanga1.png');
 }
 
 function create() {
@@ -27,7 +31,7 @@ function create() {
   
     this.physics.world.setBounds(0, 0, 1200, 240);
     player = this.physics.add.sprite(50, 100, 'duende');
-
+    capanga1=this.physics.add.sprite(400,110, 'capanga1').setScale(0.7,0.7);
     this.cameras.main.startFollow(player, true);
     this.cameras.main.setZoom(2);
   
@@ -53,6 +57,14 @@ function create() {
   this.anims.create({
     key: 'a',
     frames: this.anims.generateFrameNumbers('duende_andando', { start: 1, end: 8 }),
+    frameRate: 10,
+    repeat: -1
+  });
+
+  //capanga animation
+  this.anims.create({
+    key: 'opa',
+    frames: this.anims.generateFrameNumbers('capanga1a', { start: 0, end: 5 }),
     frameRate: 10,
     repeat: -1
   });
@@ -104,6 +116,7 @@ function update() {
         player.anims.play('turn');
     }
   }
+  capanga1.anims.play('opa', true);
 }  
 
 var config = {
