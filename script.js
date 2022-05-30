@@ -7,9 +7,10 @@ function preload() {
     );
   this.load.spritesheet('duende_andando_esquerda',                  'assets/duende/Duende_Verde_Stance_andandoLeft.png',                 {frameWidth:70, frameHeight: 100}            );
 
-  //capanga
+  //capangas
  this.load.spritesheet('capanga1a', 'assets/Capangas/CapangaWalk1.png', {frameWidth:87, frameHeight:129});
   this.load.image('capanga1', 'assets/Capangas/Capanga1.png');
+  this.load.image('capanga2', 'assets/Capangas/Capanga2.png');
 }
 
 function create() {
@@ -31,7 +32,8 @@ function create() {
   
     this.physics.world.setBounds(0, 0, 1200, 240);
     player = this.physics.add.sprite(50, 100, 'duende');
-    capanga1=this.physics.add.sprite(400,110, 'capanga1').setScale(0.7,0.7);
+    capanga1=this.physics.add.sprite(400,105, 'capanga1').setScale(0.7,0.7);
+    capanga2=this.physics.add.sprite(750,100,'capanga2');
     this.cameras.main.startFollow(player, true);
     this.cameras.main.setZoom(2);
   
